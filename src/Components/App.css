@@ -1,0 +1,13 @@
+.App{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.colorMiddle{
+  background-color: #446668;
+  height: 30px;
+  border-width: 4px 4px 0px 4px;
+  border-style: solid;
+  border-color: #749593;
+}
