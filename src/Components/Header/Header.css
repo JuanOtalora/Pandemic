@@ -75,6 +75,20 @@ span{
 
 }
 
+.f{
+	display: flex;
+	align-items: center;
+}
+
+.iconT{
+	image-rendering: -moz-crisp-edges; /* Firefox */
+  	image-rendering: -webkit-optimize-contrast; /* Safari */
+  	image-rendering: pixelated; /* Chrome and Opera */
+  	width: 60px;
+  	margin-right: 5px;
+
+}
+
 .save{
 	background-color: #394f57;
 	color: white;

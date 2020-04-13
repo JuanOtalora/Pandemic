@@ -5,10 +5,10 @@ import labsUnlocked from './img/labUnlocked.png';
 
 const Labs = (props) => {
 
-	let imgLab = <img className="labDoors" src={LabsDoor}/>
+	let imgLab = <img alt="labDoorClosed-icon" className="labDoors" src={LabsDoor}/>
 	let differentComponent = <button onClick={()=> props.unlockLab()} className="buyLabs">Unlock Labs Cost: $1,000,000</button>
 	if(props.labsUnlocked){
-		imgLab = <img className="labUn" src={labsUnlocked}/>
+		imgLab = <img alt="labDoorUnlocked-icon" className="labUn" src={labsUnlocked}/>
 		differentComponent =
 		<div>
 			<h1 className="titleB">Funding:</h1>
@@ -32,6 +32,7 @@ const Labs = (props) => {
 		<div className="lab">
 			<div className="labButton">
 				{imgLab}
+				<p className='descriptionH'>To begin to research the cure you must first unlock labs and then give money to funding</p>
 			</div>
 			<div className="funding">
 				{differentComponent}

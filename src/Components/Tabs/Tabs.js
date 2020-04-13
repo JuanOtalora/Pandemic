@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Tabs.css'
 import PolicyTab from './img/policyTab.png'
 import PillTab from './img/pill.png'
@@ -34,19 +34,19 @@ const Tabs = (props) =>{
 	return(
 		<div className="tabs">
 			<button className="buttonTab" className={tab1} onClick={()=> props.changeActiveTab(0)}>
-				<img className="iconTabM" src={MoneyTab} />
+				<img alt="money-icon" className="iconTabM" src={MoneyTab} />
 				<p className="iconP">Money Tab</p>
 			</button>
-			<button className="buttonTab"className={tab2} onClick={()=> props.changeActiveTab(1)}>
-				<img className="iconTab" src={PillTab} />
+			<button className="buttonTab" className={tab2} onClick={()=> props.changeActiveTab(1)}>
+				<img alt="health-icon" className="iconTab" src={PillTab} />
 				<p className="iconP">Health Tab</p>
 			</button>
-			<button className="buttonTab"className={tab3} onClick={()=> props.changeActiveTab(2)}>
-				<img className="iconTab" src={PolicyTab} />
+			<button className="buttonTab" className={tab3} onClick={()=> props.changeActiveTab(2)}>
+				<img alt="policy-icon" className="iconTab" src={PolicyTab} />
 				<p className="iconP">Policy Tab</p>
 			</button>
-			<button className="buttonTab"className={tab4} onClick={()=> props.changeActiveTab(3)}>
-				<img className="iconTabL" src={LabTab} />
+			<button className="buttonTab" className={tab4} onClick={()=> props.changeActiveTab(3)}>
+				<img alt="lab-icon" className="iconTabL" src={LabTab} />
 				<p className="iconP">Lab Tab</p>
 			</button>
 		</div>

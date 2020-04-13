@@ -96,8 +96,26 @@
 
 }
 
+.policyRibbon{
+	width: 70px;
+	image-rendering: -moz-crisp-edges; /* Firefox */
+  	image-rendering: -webkit-optimize-contrast; /* Safari */
+  	image-rendering: pixelated; /* Chrome and Opera */
+}
+
 .policyDescription{
 	margin:0px;
+}
+
+.policyTitle{
+	color: white;
+	font-size: 30px;
+	margin:0px;
+}
+
+.policyTitleDiv{
+	display: flex;
+	align-items: center;
 }
 
 .checkMark{
@@ -110,6 +128,7 @@
 .titleP{
 	color: white;
 	margin: 0px;
+	margin-bottom: 5px;
 }
 
 

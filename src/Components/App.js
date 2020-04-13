@@ -11,6 +11,7 @@ class App extends React.Component {
   
   state={
     numberInfected: 1,
+    modalAbout: false,
     usdPerSec: 0,
     productionBonus: 1,
     day: 1,
@@ -114,7 +115,7 @@ class App extends React.Component {
         unrestAdd: 5,
         passiveUnrest: 0.1,
         production: 0,
-        infectionRateBonus: 0.5,
+        infectionRateBonus: -0.5,
         enacted: false,
         cost: 0  
       },
@@ -125,13 +126,13 @@ class App extends React.Component {
         unrestAdd: 0,
         passiveUnrest: 0.5,
         production: 1,
-        infectionRateBonus: 2,
+        infectionRateBonus: 1,
         enacted: false,
         cost: 0 
       },
       {
         id: 2,
-        name: 'Testing Live Humans',
+        name: 'Testing On Humans',
         effect: 'Doubles all Research but generates inmense unRest',
         unrestAdd: 20,
         passiveUnrest: 2.5,
@@ -142,8 +143,8 @@ class App extends React.Component {
       },
       {
         id: 3,
-        name: 'Donate Monet',
-        effect: 'Donate Money',
+        name: 'Donate Money',
+        effect: 'Give money to the people to lower 20 Unrest',
         unrestAdd: -20,
         passiveUnrest: 0,
         production: 0,
@@ -216,6 +217,35 @@ class App extends React.Component {
         day: dayReset,
         month: monthReset,
         year: yearReset
+      }
+    })
+  }
+
+  donateMoney = () =>{
+    this.setState(prevState=>{
+      let money = prevState.money
+      let newCost = prevState.policyList[3].cost;
+      let unRest = prevState.unrest;
+      let updatedPolicies = [...prevState.policyList];
+      let updatedPolicy = {...prevState.policyList[3]};
+      if(prevState.money >= prevState.policyList[3].cost){
+        money -= prevState.policyList[3].cost;
+        newCost = newCost * 1.15;
+        updatedPolicy.cost = newCost;
+        if(unRest < 20){
+          unRest = 0;
+        }else{
+          unRest -= 20;
+        }
+      }else{
+        console.log('Not enough funds')
+      }
+      updatedPolicies[3] = updatedPolicy;
+      return{
+        money: money,
+        unrest: unRest,
+        policyList: updatedPolicies
+
       }
     })
   }
@@ -341,7 +371,7 @@ class App extends React.Component {
         unrestNew += updatedPolicy.unrestAdd
         unrestNewPassive += updatedPolicy.passiveUnrest
         newProductionBonus += updatedPolicy.production
-        newInfectionBonus = updatedPolicy.infectionRateBonus
+        newInfectionBonus += updatedPolicy.infectionRateBonus
       }else{
         unrestNewPassive -= updatedPolicy.passiveUnrest
         newProductionBonus -= updatedPolicy.production
@@ -428,6 +458,15 @@ class App extends React.Component {
     })
   }
 
+  changeModalAbout = () =>{
+    this.setState(prevState=> {
+      let changeState = !prevState.modalAbout
+      return{
+        modalAbout: changeState
+      }
+    })
+  }
+
 
 
   render(){
@@ -437,6 +476,7 @@ class App extends React.Component {
 
     if (this.state.activeTab === 0) {
       tab = <Money 
+          money={this.state.money}
           usdPerSec={this.state.usdPerSec}
           clickMoney={this.changeMoney}
           buyBuilding={this.buyBuilding}
@@ -450,6 +490,7 @@ class App extends React.Component {
       tab = <Policy 
             policyList={this.state.policyList}
             changePolicyState={this.changePolicyState}
+            donateMoney={this.donateMoney}
             />
     }else if(this.state.activeTab === 3){
       tab = <Labs 
@@ -464,9 +505,17 @@ class App extends React.Component {
             />
     }
 
+    let openAbout = 'closed'
+    if(this.state.modalAbout){
+      openAbout = 'open'
+    }else{
+      openAbout = 'closed'
+    }
+
     return (
       <div className="App">
         <Header
+        changeModalAbout={this.changeModalAbout}
         infectionRateBonus={this.state.infectionRateBonus}
         saveGame={this.save}
         loadGame={this.loadGame}
@@ -486,6 +535,15 @@ class App extends React.Component {
         activeTabId={this.state.activeTab}
         />
         {tab}
+        <div className={openAbout}>
+          <div className='mainModal'>
+            <h1>About</h1>
+            <p className="margin">You are the leader of the world! Cool!... Save as many people while researching a cure! Start with generating money and read the description of all the different tabs</p>
+            <p className="marginT">This game was made with much love, but now people all over the world need love and help if you enjoyed the journey consider donating to the any of the following links:</p>
+            <a rel="noopener noreferrer" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/donate" target="_blank" className="marginT">World Health Organization</a>
+            <button className='buttonCloseModal' onClick={()=> this.changeModalAbout()}>Close</button>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Money.css'
 import moneyTree from './img/moneyTree.png'
 
@@ -10,15 +10,15 @@ const Money = (props) => {
 			<div className="moneyClick">
 				<button className="mainButton" onClick={() => props.clickMoney(1)}>		
 					<h1 className="moneyPer">Money per Second: {props.usdPerSec.toFixed(1)}</h1>
-					<img className="moneyTree" src={moneyTree}/>
+					<img alt="moneyTree" className="moneyTree" src={moneyTree}/>
 					<h2>Money Doesn't grow on trees except for you! Click the tree for more money</h2>
 				</button>
 			</div>
 			<div className="moneyBuildings">
 				<h1 className="titleB">Money Generators:</h1>
 				<div className="divider">
-					<button className="building" onClick={() => props.buyBuilding(0)}>
-						<img />
+					<button disabled={props.moneyBuildings[0].cost > props.money} className="building" onClick={() => props.buyBuilding(0)}>
+						<span/>
 						<div className="insideBuilding">
 							<h3>{props.moneyBuildings[0].name}</h3>
 							<span className="cost">$ {props.moneyBuildings[0].cost}</span>
@@ -26,7 +26,7 @@ const Money = (props) => {
 						<h2 className="bigNumber">{props.moneyBuildings[0].number}</h2>
 						<div className='tooltip'>
 							<div className='titleTool'>
-								<img />
+								<span/>
 								<h1 className="tooltipTitle">{props.moneyBuildings[0].name}</h1>
 							</div>
 							<p>"{props.moneyBuildings[0].description}"</p>
@@ -38,8 +38,8 @@ const Money = (props) => {
 					</button>
 				</div>
 				<div className="divider">
-					<button className="building" onClick={() => props.buyBuilding(1)}>
-						<img />
+					<button disabled={props.moneyBuildings[0].cost > props.money} className="building" onClick={() => props.buyBuilding(1)}>
+						<span/>
 						<div className="insideBuilding">
 							<h3>{props.moneyBuildings[1].name}</h3>
 							<span className="cost">$ {props.moneyBuildings[1].cost}</span>
@@ -47,7 +47,7 @@ const Money = (props) => {
 						<h2 className="bigNumber">{props.moneyBuildings[1].number}</h2>
 						<div className='tooltip'>
 							<div className='titleTool'>
-								<img />
+								<span/>
 								<h1 className="tooltipTitle">{props.moneyBuildings[1].name}</h1>
 							</div>
 							<p>"{props.moneyBuildings[1].description}"</p>
@@ -59,8 +59,8 @@ const Money = (props) => {
 					</button>
 				</div>
 				<div className="divider">
-					<button className="building" onClick={() => props.buyBuilding(2)}>
-						<img />
+					<button disabled={props.moneyBuildings[0].cost > props.money} className="building" onClick={() => props.buyBuilding(2)}>
+						<span/>
 						<div className="insideBuilding">
 							<h3>{props.moneyBuildings[2].name}</h3>
 							<span className="cost">$ {props.moneyBuildings[2].cost}</span>
@@ -68,7 +68,7 @@ const Money = (props) => {
 						<h2 className="bigNumber">{props.moneyBuildings[2].number}</h2>
 						<div className='tooltip'>
 							<div className='titleTool'>
-								<img />
+								<span/>
 								<h1 className="tooltipTitle">{props.moneyBuildings[2].name}</h1>
 							</div>
 							<p>"{props.moneyBuildings[2].description}"</p>
@@ -80,8 +80,8 @@ const Money = (props) => {
 					</button>
 				</div>
 				<div className="divider">
-					<button className="building" onClick={() => props.buyBuilding(3)}>
-						<img />
+					<button disabled={props.moneyBuildings[0].cost > props.money} className="building" onClick={() => props.buyBuilding(3)}>
+						<span/>
 						<div className="insideBuilding">
 							<h3>{props.moneyBuildings[3].name}</h3>
 							<span className="cost">$ {props.moneyBuildings[3].cost}</span>
@@ -89,7 +89,7 @@ const Money = (props) => {
 						<h2 className="bigNumber">{props.moneyBuildings[3].number}</h2>
 						<div className='tooltip'>
 							<div className='titleTool'>
-								<img />
+								<span/>
 								<h1 className="tooltipTitle">{props.moneyBuildings[3].name}</h1>
 							</div>
 							<p>"{props.moneyBuildings[3].description}"</p>
@@ -101,8 +101,8 @@ const Money = (props) => {
 					</button>
 				</div>
 				<div className="divider">
-					<button className="building" onClick={() => props.buyBuilding(4)}>
-						<img />
+					<button disabled={props.moneyBuildings[0].cost > props.money} className="building" onClick={() => props.buyBuilding(4)}>
+						<span/>
 						<div className="insideBuilding">
 							<h3>{props.moneyBuildings[4].name}</h3>
 							<span className="cost">$ {props.moneyBuildings[4].cost}</span>
@@ -110,7 +110,7 @@ const Money = (props) => {
 						<h2 className="bigNumber">{props.moneyBuildings[4].number}</h2>
 						<div className='tooltip'>
 							<div className='titleTool'>
-								<img />
+								<span/>
 								<h1 className="tooltipTitle">{props.moneyBuildings[4].name}</h1>
 							</div>
 							<p>"{props.moneyBuildings[4].description}"</p>
@@ -122,8 +122,8 @@ const Money = (props) => {
 					</button>
 				</div>
 				<div className="divider">
-					<button className="building" onClick={() => props.buyBuilding(5)}>
-						<img />
+					<button disabled={props.moneyBuildings[0].cost > props.money} className="building" onClick={() => props.buyBuilding(5)}>
+						<span/>
 						<div className="insideBuilding">
 							<h3>{props.moneyBuildings[5].name}</h3>
 							<span className="cost">$ {props.moneyBuildings[5].cost}</span>
@@ -131,7 +131,7 @@ const Money = (props) => {
 						<h2 className="bigNumber">{props.moneyBuildings[5].number}</h2>
 						<div className='tooltip'>
 							<div className='titleTool'>
-								<img />
+								<span/>
 								<h1 className="tooltipTitle">{props.moneyBuildings[5].name}</h1>
 							</div>
 							<p>"{props.moneyBuildings[5].description}"</p>
